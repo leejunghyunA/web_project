@@ -103,14 +103,14 @@ def flavor_cho(request):
 
     return render(request, 'wines/flavor_cho.html', {'flavor_li': li})
 
-def flavor(request, flavor):
+def flavor(request, name):
     # choice_flavor = str(request.GET.get('flavor'))
     wine_df = pd.read_csv('wines/wine_final_real.csv')
     li1 = []
     for i in range(len(wine_df)):
         aroma_ = wine_df['아로마 딕셔너리'][i]
         aroma_ = list(eval(aroma_).keys())
-        if flavor in aroma_:
+        if name in aroma_:
             li1.append(i)
     new_df = wine_df.loc[li1]
     new_index = li1
@@ -121,4 +121,28 @@ def flavor(request, flavor):
     total_li = zip(new_index, new_names, types, dangs, foods)
     total = len(new_index)
 
-    return render(request, 'wines/flavor.html', {'total_li': total_li, 'total': total, 'choice_flavor': flavor})
+    return render(request, 'wines/flavor.html', {'total_li': total_li, 'total': total, 'choice_flavor': name})
+
+# foods선택 안 
+def foods_cho(request):
+    li = ['육류', '에피타이저', '매운음식', '해산물', 'sweet디저트', '양식', '중국음식', '디저트']
+
+    return render(request, 'wines/foods_cho.html', {'foods_li': li})
+
+def foods(request, fo_name):
+    wine_df = pd.read_csv('wines/wine_final_real.csv')
+    li1 = []
+    for i in range(len(wine_df)):
+        foods_ = wine_df['음식'][i].split(' ')
+        if fo_name in foods_:
+            li1.append(i)
+    new_df = wine_df.loc[li1]
+    new_index = li1
+    new_names = new_df['와인이름'].tolist()
+    types = new_df['와인타입'].tolist()
+    dangs = new_df['당도'].tolist()
+    foods = new_df['음식'].tolist()
+    total_li = zip(new_index, new_names, types, dangs, foods)
+    total = len(new_index)
+
+    return render(request, 'wines/foods.html', {'total_li': total_li, 'total': total, 'choice_foods': fo_name})

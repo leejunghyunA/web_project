@@ -32,42 +32,36 @@
             <div class='container'>
                 <div class="row mb-5 align-items-center">
                     <div class="col-md-12 col-lg-6 mb-4 mb-lg-0" data-aos="fade-up">
-                        <h1>wine Recommendation</h1>
-                        <h2 class="mb-0">당신의 와인 취향은>></h2>
-                        <h2 class="text-success"><mark><strong> "{{new_clus}}" </strong></mark></h2>
+                        <h1>FOODS MATCHING WINE</h1>
+                        <h2 class="text-success"><mark><strong> "{{choice_foods}}와 어울리는 와인" </strong></mark></h2>
                     </div>
                     <div class="col-md-12 col-lg-6 text-start text-lg-end" data-aos="fade-up" data-aos-delay="100">
                         <div id="filters" class="filters">
-                            <a href="#" data-filter="*" class="active">All</a>
+                            <a href="#" data-filter="*" class="active">All</a>ㄴ
                             <a href="#" data-filter="">Flavor</a>
                             <a href="#" data-filter="">당도</a>
                         </div>
                     </div>
                 </div>
-                {% if total > 0 %}
-                    {% for index, name, type, dang, food in total_li %}
-                        <div id="portfolio-grid" class="col" data-aos="fade-up" data-aos-delay="200">
-                            <div class="item web col-sm-6 col-md-4 col-lg-4 mb-4">
-                                <a href="{% url 'postdetail' idx=index %}" class="item-wrap fancybox">
-                                    <div class="work-info">
-                                        <h3>자세히 보기</h3>
-                                        <span>>></span>
-                                    </div>
-                                    <img class="img-fluid" src="/static/img/{{ name }}.jpg">
-                                </a>
-                                <h3> {{ index }}</h3>
-                                <h3> 추천 와인: {{ name }}</h3>
-                                <h4>와인 유형: {{ type }}</h4>
-                                <h4>당도: {{ dang }}</h4>
-                                <h4>어울리는 음식: {{ food }}</h4>
-                            </div>
+                {% for index, name, type, dang, food in total_li %}
+                    <div id="portfolio-grid" class="col" data-aos="fade-up" data-aos-delay="200">
+                        <div class="item web col-sm-6 col-md-4 col-lg-4 mb-4">
+                            <a href="{% url 'postdetail' idx=index %}" class="item-wrap fancybox">
+                                <div class="work-info">
+                                    <h3>자세히 보기</h3>
+                                    <span>>></span>
+                                </div>
+                                <img class="img-fluid" src="/static/img/{{ name }}.jpg">
+                            </a>
+                            <h3> {{ index }}</h3>
+                            <h3> 추천 와인: {{ name }}</h3>
+                            <h4>와인 유형: {{ type }}</h4>
+                            <h4>당도: {{ dang }}</h4>
+                            <h4>어울리는 음식: {{ food }}</h4>
                         </div>
-                    {% endfor %}
-                {% else %}
-                    <h1> 해당하는 와인이 없습니다ㅠㅠ</h1>
-                    <a href="{% url 'choice' %}" type="button" class="btn btn-warning">다시 고르러가기</a>
-                {% endif %}
-                </div>
+                    </div>
+                {% endfor %}
+                <a href="{% url 'flavor_cho' %}" type="button" class="btn btn-warning">다시 고르러가기</a>
             </div>
         </section>
     </main>

@@ -55,13 +55,13 @@
         <nav id="navbar" class="navbar order-last order-lg-0">
             <ul>
                 <li><a class="nav-link scrollto active" href="index">Home</a></li>
-                {% comment %} <li><a class="nav-link scrollto" href="#about">Log</a></li>
-                <li><a class="nav-link scrollto" href="#menu">Menu</a></li> {% endcomment %}
+                <!-- <li><a class="nav-link scrollto" href="#about">Log</a></li>
+                <li><a class="nav-link scrollto" href="#menu">Menu</a></li>  -->
                 <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
                 <!--로그인-->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {% comment %} {{ user.username }} {% endcomment %}
+                        <!-- {{ user.username }} -->
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="/accounts/logout/">Log Out</a>
@@ -144,7 +144,7 @@
                         <div class="col-lg-3 mt-3 mt-lg-0">
                             <div class="box">
                                 <span><i class="fa-solid fa-utensils"></i></span>
-                                <a href="/foods_cho/"> Dish </a>
+                                <a href="foods_cho"> Dish </a>
                             </div>
                         </div>
                         <div class="col-lg-3 mt-3 mt-lg-0">
@@ -162,11 +162,11 @@
                     </div>
                 </div>
             </sectoin>
-                {% comment %} <span class="border border-dark p-3"><a href="Flavor_list"> Flavor </a></span>
+                 <!-- <span class="border border-dark p-3"><a href="Flavor_list"> Flavor </a></span>
                 <span class="border border-dark p-3"><a href="Flavor_list"> Dish </a></span>
                 <span class="border border-dark p-3"><a href="Flavor_list"> 특징 </a></span>
-                <span class="border border-dark p-3"><a href="Flavor_list"> Situation </a></span> {% endcomment %}
-                {% comment %} <a href="choice"> Dish </a> {% endcomment %}
+                <span class="border border-dark p-3"><a href="Flavor_list"> Situation </a></span> 
+                <a href="choice"> Dish </a> -->
         </div>
     </main>
     <a href="choice">1. 내 취향 알아보기~ </a><br><br>
@@ -217,7 +217,6 @@
     </script>
     <!-- 검색창에 enter을 눌러도 go버튼을 클릭할 때와 동일하게 작동-->
 
-    {% comment %} <a href="var1">1. 내 취향 알아보기~ </a><br><br> {% endcomment %}
     <!-- Vendor JS Files -->
     <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
