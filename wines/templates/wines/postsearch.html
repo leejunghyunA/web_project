@@ -32,10 +32,9 @@
             <div class='container'>
                 <div class="row mb-5 align-items-center">
                     <div class="col-md-12 col-lg-6 mb-4 mb-lg-0" data-aos="fade-up">
-                        <h1>wine Recommendation</h1>
-                        <h2 class="mb-0">당신의 와인 취향은>></h2>
-                        <h2 class="text-success"><mark><strong> "{{new_clus}}" </strong></mark></h2>
-                    </div>
+                        <h1>Search : {{total}}개</h1>
+                        <h2 class="text-success"><mark><strong> "{{search_value}}" </strong></mark>검색어 결과</h2>
+                    </div>ㄴ
                     <div class="col-md-12 col-lg-6 text-start text-lg-end" data-aos="fade-up" data-aos-delay="100">
                         <div id="filters" class="filters">
                             <a href="#" data-filter="*" class="active">All</a>
@@ -65,7 +64,7 @@
                     {% endfor %}
                 {% else %}
                     <h1> 해당하는 와인이 없습니다ㅠㅠ</h1>
-                    <a href="{% url 'choice' %}" type="button" class="btn btn-warning">다시 고르러가기</a>
+                    <a href="{% url 'index' %}" type="button" class="btn btn-warning">돌아가기</a>
                 {% endif %}
                 </div>
             </div>

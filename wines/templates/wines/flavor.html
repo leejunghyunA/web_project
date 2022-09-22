@@ -32,9 +32,8 @@
             <div class='container'>
                 <div class="row mb-5 align-items-center">
                     <div class="col-md-12 col-lg-6 mb-4 mb-lg-0" data-aos="fade-up">
-                        <h1>wine Recommendation</h1>
-                        <h2 class="mb-0">당신의 와인 취향은>></h2>
-                        <h2 class="text-success"><mark><strong> "{{new_clus}}" </strong></mark></h2>
+                        <h1>당신이 선택한 와인 FLAVOR LIST</h1>
+                        <h2 class="text-success"><mark><strong> "{{choice_flavor}}" </strong></mark></h2>
                     </div>
                     <div class="col-md-12 col-lg-6 text-start text-lg-end" data-aos="fade-up" data-aos-delay="100">
                         <div id="filters" class="filters">
@@ -65,7 +64,7 @@
                     {% endfor %}
                 {% else %}
                     <h1> 해당하는 와인이 없습니다ㅠㅠ</h1>
-                    <a href="{% url 'choice' %}" type="button" class="btn btn-warning">다시 고르러가기</a>
+                    <a href="{% url 'flavor_cho' %}" type="button" class="btn btn-warning">다시 고르러가기</a>
                 {% endif %}
                 </div>
             </div>

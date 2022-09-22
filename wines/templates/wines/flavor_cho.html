@@ -28,9 +28,55 @@
     <!-- Template Main CSS File -->
     <link href="{% static 'css/style_index.css' %}" rel="stylesheet">
     <style>
-        #hero {
-            background-image: url("{% static 'img/바탕.jpg' %}");
-        }
+        .item .item-wrap img {
+            transition: 0.3s transform ease;
+            transform: scale(1);
+          }
+          
+          .item .item-wrap>.work-info {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            text-align: center;
+            z-index: 3;
+            transform: translateY(-50%);
+            color: #bbb;
+            opacity: 0;
+            visibility: hidden;
+            margin-top: 20px;
+            transition: 0.3s all ease;
+          }
+          
+          .item .item-wrap>.work-info h3 {
+            font-size: 20px;
+            margin-bottom: 0;
+          }
+          
+          .item .item-wrap>.work-info span {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+          }
+          
+          .item .item-wrap:hover {
+            text-decoration: none;
+          }
+          
+          .item .item-wrap:hover img {
+            transform: scale(1.05);
+          }
+          
+          .item .item-wrap:hover:after {
+            opacity: 1;
+            visibility: visible;
+          }
+          
+          .item .item-wrap:hover .work-info {
+            margin-top: 0px;
+            opacity: 1;
+            visibility: visible;
+          }
+
     </style>
 </head>
 <body>
@@ -113,63 +159,85 @@
         </div>
     </div>
    </div>
-    <section id="hero">
-        <div class="carousel-container">
-            <h2 class="animate__animated animate__fadeInDown">Sequi ea ut et est quaerat</h2>
-            <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-            <div>
-                <a href="#menu" class="btn-menu animate__animated animate__fadeInUp scrollto">Our Menu</a>
-                <a href="#book-a-table" class="btn-book animate__animated animate__fadeInUp scrollto">Book a Table</a>
-            </div>
+
+    <div class="container">
+        <div class="row">
+            <div  class="offset-md-5"><img src= "{% static 'img/로고.jpg' %}" width="200", height="180"></div>
         </div>
-    </section>
-
-
-    <main id="main">
-        <div class="container">
-            <div class="row">
-                <div  class="offset-md-5"><img src= "{% static 'img/로고.jpg' %}" width="200", height="180"></div>
-            </div>
-        <!-- category sectoin -->
-            <section id="why-us" class="why-us">
-                <div class="section-title">
-                    <h3>"CHOICE"</h3>
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <div class="box">
-                                <span><i class="bi bi-flower1"></i></span>
-                                <a href="flavor_cho"> Flavor </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 mt-3 mt-lg-0">
-                            <div class="box">
-                                <span><i class="fa-solid fa-utensils"></i></span>
-                                <a href="/foods_cho/"> Dish </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 mt-3 mt-lg-0">
-                            <div class="box">
-                                <span><i class="fa-solid fa-magnifying-glass-chart"></i></span>
-                                <a href="char_cho"> 특징 </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 mt-3 mt-lg-0">
-                            <div class="box">
-                                <span><i class="fa-solid fa-children"></i></span>
-                                <a href="situation_cho"> Situation </a>
-                            </div>
-                        </div>
+    <!-- category sectoin -->
+        <div class="row my-4" style="height: 140px">
+            {% for flavor_name in flavor_li %}
+            <div class="item web col-sm-6 col-md-3 col-lg-3 mb-3">
+                <a href="{% url 'flavor' idx=flavor_name %}" class="item-wrap fancybox">
+                    <div class="work-info">
+                        <h3>보러가기</h3>
+                        <span>>></span>
                     </div>
-                </div>
-            </sectoin>
-                {% comment %} <span class="border border-dark p-3"><a href="Flavor_list"> Flavor </a></span>
-                <span class="border border-dark p-3"><a href="Flavor_list"> Dish </a></span>
-                <span class="border border-dark p-3"><a href="Flavor_list"> 특징 </a></span>
-                <span class="border border-dark p-3"><a href="Flavor_list"> Situation </a></span> {% endcomment %}
-                {% comment %} <a href="choice"> Dish </a> {% endcomment %}
+                <img src="/static/img/{{ flavor_name }}.jpg" class="img-fluid h-100">
+            </div>
         </div>
-    </main>
-    <a href="choice">1. 내 취향 알아보기~ </a><br><br>
+            {% comment %} <div class="item web col-sm-6 col-md-4 col-lg-4 mb-4">
+                <a href="flavor" class="item-wrap fancybox" name="flavor", value="허베이셔스">
+                    <div class="work-info">
+                        <h3>보러가기</h3>
+                        <span>>></span>
+                    </div>
+                <img src="/static/img/허베이셔스.jpg" alt="Image" class="img-fluid h-100">
+            </div>
+            <div class="col col-lg-3">
+                <a href="flavor" class="item-wrap fancybox" name="허베이셔스", value="허베이셔스">
+                    <div class="work-info">
+                        <h3>보러가기</h3>
+                        <span>>></span>
+                    </div>
+                <img src="/static/img/자연(Earthy).jpg" alt="Image" class="img-fluid h-100">
+            </div>
+            <div class="col col-lg-3">
+                <img src="/static/img/꽃.jpg" alt="Image" class="img-fluid h-100">
+            </div>
+        </div>
+        <div class="row my-4" style="height: 140px">
+            <div class="col col-lg-3">
+                <img src="/static/img/핵과.jpg" alt="Image" class="img-fluid h-100">
+            </div>
+            <div class="col col-lg-3">
+                <img src="/static/img/오크(Oak).jpg" alt="Image" class="img-fluid h-100">
+            </div>
+            <div class="col col-lg-3">
+                <img src="/static/img/까만 과일.jpg" alt="Image" class="img-fluid h-100">
+            </div>
+            <div class="col col-lg-3">
+                <img src="/static/img/열대 과일.jpg" alt="Image" class="img-fluid h-100">
+            </div>
+        </div>
+        <div class="row my-4" style="height: 140px">
+            <div class="col col-lg-3">
+                <img src="/static/img/스파이스.jpg" alt="Image" class="img-fluid h-100">
+            </div>
+            <div class="col col-lg-3">
+                <img src="/static/img/허브.jpg" alt="Image" class="img-fluid h-100">
+            </div>
+            <div class="col col-lg-3">
+                <img src="/static/img/시트러스.jpg" alt="Image" class="img-fluid h-100">
+            </div>
+            <div class="col col-lg-3">
+                <img src="/static/img/이스트.jpg" alt="Image" class="img-fluid h-100">
+            </div>
+        </div>
+        <div class="row my-4" style="height: 140px">
+            <div class="col col-lg-3">
+                <img src="/static/img/유산발효.jpg" alt="Image" class="img-fluid h-100">
+            </div>
+            <div class="col col-lg-3">
+                <img src="/static/img/말린 허브.jpg" alt="Image" class="img-fluid h-100">
+            </div>
+            <div class="col col-lg-3">
+                <img src="/static/img/말린 과일.jpg" alt="Image" class="img-fluid h-100">
+            </div>
+            <div class="col col-lg-3">
+                <img src="/static/img/녹색 과일.jpg" alt="Image" class="img-fluid h-100">
+            </div>
+        </div> {% endcomment %}
 
     <!-- ======= Footer ======= -->
   <footer id="footer">

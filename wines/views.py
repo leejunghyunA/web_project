@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView, DateDetailView
 import joblib
 import pickle
-
+# 검색기능
+from django.db.models import Q
 import pandas as pd
 import numpy as np
 import json
@@ -49,44 +50,6 @@ def postlist(request):
 
     return render(request, 'wines/postlist.html', {'total_li': total_li, 'total': total, 'new_clus':new_clus})
 
-    # wine__df = ['없음']
-    # wine_type = request.GET.get('type')
-    # df_dang = request.GET.get('dang')
-    # # df_flavor = request.GET['Flavor']
-    # df_mouthfeel = request.GET.get('body')
-    # df_acidity = request.GET.get('acidity')
-
-    # new_df = wine_df[(wine_df['당도']==df_dang)&(wine_df['산도']==df_acidity)&(wine_df['바디']==df_mouthfeel)&(wine_df['와인타입']==wine_type)]
-    # context = {
-    #     'names':new_df['와인이름'].tolist(),
-    #     'types': new_df['와인타입'].tolist(),
-    #     'dangs': new_df['당도'].tolist(),
-    #     'foods': new_df['음식'].tolist(),
-    # }
-
-    # new_index = new_df.index.tolist()
-    # new_names = new_df['와인이름'].tolist()
-    # types = new_df['와인타입'].tolist()
-    # dangs = new_df['당도'].tolist()
-    # foods = new_df['음식'].tolist()
-    # # post_list = len(new_names)
-    # total_li = zip(new_index, new_names, types, dangs, foods)
-    # total = len(new_index)
-
-    # # 결과 담기
-    # targetdict = {
-    #     'wine_name': new_names,
-    #     'wine_type' : types,
-    #     'wine_dang' : dangs,
-    #     'wine_foods' : foods,
-    # }
-
-    # targetJson = json.dumps(targetdict)
-    # return render(request, 'wines/postlist.html', {'total_li': total_li, 'total': total})
-
-    # return render(request, 'wines/postlist.html', {'result':new_names, 'wine_type': types, 'wine_dang': dangs, 'wine_foods': foods, 'post_list': post_list,})
-
-
 def postdetail(request,idx):
     wine_df = pd.read_csv('wines/wine_final_real.csv')
 
@@ -115,38 +78,47 @@ def postdetail(request,idx):
 
     return render(request, 'wines/postdetail.html', {'result':new_names, 'enname': new_ennames, 'types': types, 'country':country, 'grape':grape, 'alcohol':alcohol, 'acidity':acidity, 'body':body, 'winery':winery, 'winery_info':winery_info, 'winery_ch':winery_ch, 'aroma_zip':aroma_zip, 'dangs': dangs, 'foods': foods})
 
-
-# def var1(request):
-#     return render(request, 'wines/var1.html')
-
-# def var1_result(request):
-#     wine_df = pd.read_csv('wines/semi_final.csv')
-#     # wine__df = ['없음']
+# 검색 창 페이지
+def postsearch(request):
+    search = str(request.GET.get('search'))
+    wine_df = pd.read_csv('wines/wine_final_real.csv')
+    li1 = []
+    for i in range(len(wine_df)):
+        if search in wine_df['와인이름'][i]:
+            li1.append(i)
     
-#     wine_type = request.GET['type']
-#     df_dang = request.GET['dang']
-#     # df_flavor = request.GET['Flavor']
-#     df_mouthfeel = request.GET['body']
-#     df_acidity = request.GET['acidity']
+    new_df = wine_df.loc[li1]
+    new_index = li1
+    new_names = new_df['와인이름'].tolist()
+    types = new_df['와인타입'].tolist()
+    dangs = new_df['당도'].tolist()
+    foods = new_df['음식'].tolist()
+    total_li = zip(new_index, new_names, types, dangs, foods)
+    total = len(new_index)
 
-#     new_df = wine_df[(wine_df['당도']==df_dang)&(wine_df['산도']==df_acidity)&(wine_df['바디']==df_mouthfeel)&(wine_df['와인타입']==wine_type)]
-    
-#     new_names = new_df['와인이름'].tolist()
-#     types = new_df['와인타입'].tolist()
-#     dangs = new_df['당도'].tolist()
-#     foods = new_df['음식'].tolist()
+    return render(request, 'wines/postsearch.html', {'total_li': total_li, 'total': total, 'search_value': search})
 
-#     # # 결과 담기
-#     # targetdict = {
-#     #     'wine_name': new_names,
-#     #     'wine_type' : types,
-#     #     'wine_dang' : dangs,
-#     #     'wine_foods' : foods,
-#     # }
+def flavor_cho(request):
+    li = ['녹색 과일','빨간 과일','허베이셔스','자연(Earthy)', '꽃','핵과', '오크(Oak)', '까만 과일', '열대 과일', '스파이스','허브','시트러스','이스트','유산발효','말린 허브','말린 과일']
 
-#     # targetJson = json.dumps(targetdict)
+    return render(request, 'wines/flavor_cho.html', {'flavor_li': li})
 
-#     return render(request, 'wines/var1_result.html', {'result':new_names, 'wine_type': types, 'wine_dang': dangs, 'wine_foods': foods})
+def flavor(request, flavor):
+    # choice_flavor = str(request.GET.get('flavor'))
+    wine_df = pd.read_csv('wines/wine_final_real.csv')
+    li1 = []
+    for i in range(len(wine_df)):
+        aroma_ = wine_df['아로마 딕셔너리'][i]
+        aroma_ = list(eval(aroma_).keys())
+        if flavor in aroma_:
+            li1.append(i)
+    new_df = wine_df.loc[li1]
+    new_index = li1
+    new_names = new_df['와인이름'].tolist()
+    types = new_df['와인타입'].tolist()
+    dangs = new_df['당도'].tolist()
+    foods = new_df['음식'].tolist()
+    total_li = zip(new_index, new_names, types, dangs, foods)
+    total = len(new_index)
 
-# def ver2(request):
-#     return render(request, 'wines/ver2.html')
+    return render(request, 'wines/flavor.html', {'total_li': total_li, 'total': total, 'choice_flavor': flavor})
