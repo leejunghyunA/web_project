@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <title>와인 타입)Recommendation</title>
+    <style>
+        h1 { text-align: center; color: white;}
+        img {
+            display: block; margin: 0px auto;
+            width:40%;
+        }
+        select {
+            width: 200px;
+            padding: .5em .5em;
+            border: 1px solid #999;
+            font-family: inherit;
+            background: url('arrow.jpg') no-repeat 95% 50%;
+            border-radius: 0px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+        input[type=text] {
+            width : 190px;
+            height : 30px;
+            font-size : 20px;
+        }
+        {% comment %} body{
+            background-image:url("{% static 'img/wine.jpg' %}");
+            background-size:100% 200%;
+        } {% endcomment %}
+        
+    </style>
+</head>
+<body>
+
+    <h1>"선호하는 와인 취향을 골라주세요"</h1>
+    <div id = 'contents' style="text-align:center;">
+        <div>
+            <form action="postlist">
+                <br>
+                {% csrf_token %}
+
+                와인 타입 :
+                <p>종류</p>
+                    <input type="checkbox" name="type" value="1">&nbsp 레드
+                    <input type="checkbox" name="type" value="2">&nbsp 화이트
+                    <input type="checkbox" name="type" value="3">&nbsp 스파클링
+                취향 :
+                <div>
+                    <p>당도</p>
+                    <input type="checkbox" name="dang" value="1">&nbsp 1
+                    <input type="checkbox" name="dang" value="2">&nbsp 2
+                    <input type="checkbox" name="dang" value="3">&nbsp 3
+                    <input type="checkbox" name="dang" value="4">&nbsp 4
+                    <input type="checkbox" name="dang" value="5">&nbsp 5
+                </div>
+                <div>
+                    <p>산도</p>
+                    <input type="checkbox" name="acidity" value="1">&nbsp 1
+                    <input type="checkbox" name="acidity" value="2">&nbsp 2
+                    <input type="checkbox" name="acidity" value="3">&nbsp 3
+                    <input type="checkbox" name="acidity" value="4">&nbsp 4
+                    <input type="checkbox" name="acidity" value="5">&nbsp 5
+                </div>
+                <br>
+                <div>
+                    <p>바디감</p>
+                    <input type="checkbox" name="body" value="1">&nbsp 1
+                    <input type="checkbox" name="body" value="2">&nbsp 2
+                    <input type="checkbox" name="body" value="3">&nbsp 3
+                    <input type="checkbox" name="body" value="4">&nbsp 4
+                    <input type="checkbox" name="body" value="5">&nbsp 5
+                </div>
+                <br>
+                <br>
+                <div>
+                    <p>도수</p>
+                    <input type="checkbox" name="alcohol" value="0">&nbsp 약하게(1~7도)
+                    <input type="checkbox" name="alcohol" value="1">&nbsp 보통(8~15도)
+                    <input type="checkbox" name="alcohol" value="2">&nbsp 강하게(16도 이상)
+                </div>
+                <br>
+                {% comment %} <div>
+                    <p>향</p>
+                    <input type="checkbox" name="Flavor" value="1">&nbsp 딸기
+                    <input type="checkbox" name="Flavor" value="0">&nbsp 오크
+                </div> {% endcomment %}
+                    {% comment %} <option value="dang">당도</option>
+                    <option value="Acidity">산도</option>
+                    <option value="Mouthfeel">바디감</option>
+                    <option value="Flavor">향</option>
+                </select><br><br> {% endcomment %}
+                <button class="btn btn-warning" type="submit" value="Pick!">보러가기!
+            </form>
+        </div>
+    </div>
+</body>
+</html>
