@@ -1,0 +1,205 @@
+<!--완료-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset = "UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <title>home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/cc6b89498d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/hamchorom.css' %}">
+  
+    <!-- Google Fonts -->
+    {% comment %} <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,600,600i,700,700i|Satisfy|Comic+Neue:300,300i,400,400i,700,700i" rel="stylesheet"> {% endcomment %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="{% static 'css/navbar.css' %}" rel="stylesheet">
+</head>
+<body>
+{% include 'wines/navbar_choice.html' %}
+    <main id="main">
+        <div class="container">
+            <div class="row my-5 p-3">
+                <!--로고-->
+                <div class="col-3 mx-auto"><img src= "{% static 'img/로고.jpg' %}" width="200", height="180"></div>
+            </div>
+            <!-- 전부 다시 (우선순위 1)-->
+            <h1>"PICK ME PICK ME!" ✔️ </h1>
+            <div style="text-align:center;">
+                <form action="postlist">
+                    <br>
+                    {% csrf_token %}
+
+                    <br>
+                    <h5 class="float-left"><strong>당도:</strong> 공차를 이용할 때 평소 고르는 내 음료 당도는?</h5>
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <td><img src="{% static 'choice_c/설탕0.png' %}" style="width:180px; height:180px;" class="img-fluid"></td>
+                                <td><img src="{% static 'choice_c/설탕1.png' %}" style="width:180px; height:180px;" class="img-fluid"></td>
+                                <td><img src="{% static 'choice_c/설탕2.png' %}" style="width:180px; height:180px;" class="img-fluid"></td>
+                                <td><img src="{% static 'choice_c/설탕3.png' %}" style="width:180px; height:180px;" class="img-fluid"></td>
+                                <td><img src="{% static 'choice_c/설탕4.png' %}" style="width:180px; height:180px;" class="img-fluid"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="dang" value="1">&nbsp 0%</td>
+                                <td><input type="checkbox" name="dang" value="2">&nbsp 30%</td>
+                                <td><input type="checkbox" name="dang" value="3">&nbsp 50%</td>
+                                <td><input type="checkbox" name="dang" value="4">&nbsp 70%</td>
+                                <td><input type="checkbox" name="dang" value="5">&nbsp 100%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <h5 class="float-left"><strong>산도:</strong> 신 음료가 마시고 싶을 때 나의 선택은?</h5>
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <td><img src="{% static 'choice_c/딸기.jpg' %}" style="width:180px; height:272px;" class="img-fluid"></td>
+                                <td><img src="{% static 'choice_c/청포도.jpg' %}" style="width:180px; height:272px;" class="img-fluid"></td>
+                                <td><img src="{% static 'choice_c/오렌지.jpg' %}" style="width:180px; height:272px;" class="img-fluid"></td>
+                                <td><img src="{% static 'choice_c/키위.jpg' %}" style="width:180px; height:272px;" class="img-fluid"></td>
+                                <td><img src="{% static 'choice_c/레몬.jpg' %}" style="width:180px; height:272px;" class="img-fluid"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="acidity" value="1">🍓 &nbsp 딸기주스</td>
+                                <td><input type="checkbox" name="acidity" value="2">🍇 &nbsp 청포도주스</td>
+                                <td><input type="checkbox" name="acidity" value="3">🍊&nbsp 오렌지주스</td>
+                                <td><input type="checkbox" name="acidity" value="4">🥝&nbsp 키위주스</td>
+                                <td><input type="checkbox" name="acidity" value="5">🍋&nbsp 레모네이드</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <h5 class="float-left"><strong>바디:</strong> 커피가 마시고 싶을 때 나의 선택은? </h5>
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <td><img src="{% static 'choice_c/연하게.jpg' %}" style="width:180px; height:272px;" class="img-fluid"></td>
+                                <td><img src="{% static 'choice_c/샷추가.jpg' %}" style="width:180px; height:272px;" class="img-fluid"></td>
+                                <td><img src="{% static 'choice_c/라떼.jpg' %}" style="width:165px; height:265px;" class="img-fluid"></td>
+                                <td><img src="{% static 'choice_c/콘파냐.jpg' %}" style="width:180px; height:250px;" class="img-fluid"></td>
+                                <td><img src="{% static 'choice_c/에스프레소.jpg' %}" style="width:180px; height:250px;" class="img-fluid"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="body" value="1">🥤&nbsp 연한 아메리카노</td>
+                                <td><input type="checkbox" name="body" value="2">🫖&nbsp 아샷추</td>
+                                <td><input type="checkbox" name="body" value="3">🥛&nbsp 라떼</td>
+                                <td><input type="checkbox" name="body" value="4">🧉&nbsp 플랫화이트</td>
+                                <td><input type="checkbox" name="body" value="5">☕&nbsp 에스프레소</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <h5 class="float-left"><strong>타입:</strong> 나는 (육류, 해산물, 달달한 디저트)파!! </h5>
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <td><img src="{% static 'choice_c/고기.png' %}" style="width:311px; height:272px;" class="img-fluid"></td>
+                                <td><img src="{% static 'choice_c/해산물.jpg' %}" style="width:311px; height:272px;" class="img-fluid"></td>
+                                <td><img src="{% static 'choice_c/sweet.png' %}" style="width:311px; height:265px;" class="img-fluid"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="type" value="1">🍖&nbsp 육류</td>
+                                <td><input type="checkbox" name="type" value="2">🦀&nbsp 해산물</td>
+                                <td><input type="checkbox" name="type" value="3">🍩&nbsp 달달한 디저트</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <h5 class="float-left"><strong>도수:</strong> 오늘 학원에서 야자를 마치고 먹고싶은 것은?</h5>
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <td><img src="{% static 'choice_c/치맥.jpg' %}" style="width:311px; height:272px;" class="img-fluid"></td>
+                                <td><img src="{% static 'choice_c/곱소.jpg' %}" style="width:311px; height:272px;" class="img-fluid"></td>
+                                <td><img src="{% static 'choice_c/위스키.jpg' %}" style="width:311px; height:265px;" class="img-fluid"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="alcohol" value="0">🍗&nbsp 치맥이 진리여~</td>
+                                <td><input type="checkbox" name="alcohol" value="1">🥘&nbsp 곱소는 항상 옳다</td>
+                                <td><input type="checkbox" name="alcohol" value="2">🍷&nbsp 멋드러지게 위스키</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--
+                    와인 타입 :
+                    <p></p>
+                        <input type="checkbox" name="type" value="1">&nbsp 육류
+                        <input type="checkbox" name="type" value="2">&nbsp 해산물
+                        <input type="checkbox" name="type" value="3">&nbsp 달달한 디저트 
+                    취향 :
+                    <div>
+                        <p>당도</p>
+
+                        <input type="checkbox" name="dang" value="1">
+                            <img src="{% static 'choice_c/곱소.jpg' %}">
+                        <input type="checkbox" name="dang" value="2">&nbsp 10%
+                        <input type="checkbox" name="dang" value="3">&nbsp 3
+                        <input type="checkbox" name="dang" value="4">&nbsp 4
+                        <input type="checkbox" name="dang" value="5">&nbsp 5
+                    </div>
+                    <div>
+                        <p>산도</p>
+                        <input type="checkbox" name="acidity" value="1">&nbsp 1
+                        <input type="checkbox" name="acidity" value="2">&nbsp 2
+                        <input type="checkbox" name="acidity" value="3">&nbsp 3
+                        <input type="checkbox" name="acidity" value="4">&nbsp 4
+                        <input type="checkbox" name="acidity" value="5">&nbsp 5
+                    </div>
+                    <br>
+                    <div>
+                        <p>바디감</p>
+                        <input type="checkbox" name="body" value="1">&nbsp 1
+                        <input type="checkbox" name="body" value="2">&nbsp 2
+                        <input type="checkbox" name="body" value="3">&nbsp 3
+                        <input type="checkbox" name="body" value="4">&nbsp 4
+                        <input type="checkbox" name="body" value="5">&nbsp 5
+                    </div>
+                    <br>
+                    <br>
+                    <div>
+                        <p>도수</p>
+                        <input type="checkbox" name="alcohol" value="0">&nbsp 약하게(1~7도)
+                        <input type="checkbox" name="alcohol" value="1">&nbsp 보통(8~15도)
+                        <input type="checkbox" name="alcohol" value="2">&nbsp 강하게(16도 이상)
+                    </div>
+                    <br>
+                -->
+                    <button class="btn btn-warning my-3" type="submit" value="Pick!">보러가기!
+                </form>
+            </div>
+        </div>
+    </main>
+    <div class="mt-auto">
+        {% include 'wines/footer.html' %}
+    </div>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
+    <script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{% static 'js/main_index.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+</html>
