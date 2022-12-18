@@ -69,6 +69,8 @@
 ## 7. 최종 구현 화면
 https://github.com/leejunghyunA/my_dj/blob/main/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%83%9D%EC%84%B1%EA%B3%BC%EC%A0%95/%EC%B5%9C%EC%A2%85_output/B_WINEZ_%EC%99%80%EB%A6%B0%EC%9D%B4%2C%20%EC%9D%B4%EB%A6%AC%EC%99%80%EB%A6%B0%EC%9D%B4_%EA%B5%AC%ED%98%84%EC%98%81%EC%83%81.mp4
 
+## 아쉬운 점
+와인 정보가 자세히 나
 ### 자세한 진행사항
 https://github.com/leejunghyunA/my_dj/blob/main/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%83%9D%EC%84%B1%EA%B3%BC%EC%A0%95/%EC%B5%9C%EC%A2%85_output/B_WINEZ_%EC%99%80%EB%A6%B0%EC%9D%B4%2C%20%EC%9D%B4%EB%A6%AC%EC%99%80%EB%A6%B0%EC%9D%B4.pdf
 
