@@ -70,7 +70,8 @@
 https://github.com/leejunghyunA/my_dj/blob/main/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%83%9D%EC%84%B1%EA%B3%BC%EC%A0%95/%EC%B5%9C%EC%A2%85_output/B_WINEZ_%EC%99%80%EB%A6%B0%EC%9D%B4%2C%20%EC%9D%B4%EB%A6%AC%EC%99%80%EB%A6%B0%EC%9D%B4_%EA%B5%AC%ED%98%84%EC%98%81%EC%83%81.mp4
 
 ## 아쉬운 점
-와인 정보가 사이트에 자세히 게시되어있지않아 약 300개 정도의 와인으로만 군집화하여 정확한 특징을 찾기 힘들었습니다. 그래서 손군집으로 비슷한 특징으로 묶어 카테고리를 생성하였지만 새로운 와인이 추가되면 군집 내용이 달라질 수 있는 일회성의 느낌이 강해서 실전에 사용할 수 없는 부분이 아쉬웠다. 
+와인 정보가 사이트에 자세히 게시되어있지않아 약 300개 정도의 와인으로만 군집화하여 정확한 특징을 찾기 힘들었습니다. 그래서 손군집으로 비슷한 특징으로 묶어 카테고리를 생성하였지만 새로운 와인이 추가되면 군집 내용이 달라질 수 있는 일회성의 느낌이 강해서 실전에 사용할 수 없는 부분이 아쉬웠습니다. 
+
 ### 자세한 진행사항
 https://github.com/leejunghyunA/my_dj/blob/main/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%83%9D%EC%84%B1%EA%B3%BC%EC%A0%95/%EC%B5%9C%EC%A2%85_output/B_WINEZ_%EC%99%80%EB%A6%B0%EC%9D%B4%2C%20%EC%9D%B4%EB%A6%AC%EC%99%80%EB%A6%B0%EC%9D%B4.pdf
 
