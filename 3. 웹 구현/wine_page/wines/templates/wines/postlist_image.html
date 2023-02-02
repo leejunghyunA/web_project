@@ -1,0 +1,97 @@
+<!--완료-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset = "UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <title>특징별 선택지</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/cc6b89498d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/hamchorom.css' %}">
+  
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,600,600i,700,700i|Satisfy|Comic+Neue:300,300i,400,400i,700,700i" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <title>와인 추천시스템</title>
+</head>
+<body>
+{% include 'wines/navbar_choice.html' %}
+    <main id="main">
+        <section class="section site-portfolio">
+            <div class='container'>
+                <div class="row mb-5 align-items-center">
+                    <div data-aos="fade-up">
+                        <h2><strong>와인 검색 결과</strong></h2>
+                        <h4 class="text-success">"인식된 텍스트는<mark><strong>  {{wine_name}} </strong></mark>입니다."</h4>
+                    </div>
+                </div>
+                {% if total > 0 %}
+                    <div id="portfolio-grid" class="row" data-aos="fade-up" data-aos-delay="200">
+                        {% for index,  name, type, dang, food in total_li %}
+                            <div class="item web col-sm-6 col-md-4 col-lg-4 mb-4">
+                                <a href="{% url 'postdetail' idx=index %}" class="item-wrap fancybox">
+                                    <div class="work-info">
+                                        <h3>자세히 보기</h3>
+                                        <span>>></span>
+                                    </div>
+                                    <img class="img-fluid" src="/static/img/{{ name }}.jpg">
+                                </a>
+
+                                <p><strong> 와인: {{ name }}</strong></p>
+                                <p>와인 유형: {{ type }}</p>
+                                <p>당도: {{ dang }}</p>
+                                <p>어울리는 음식: {{ food }}</p>
+
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %} 
+                    <div data-aos="fade-up">
+                        <h1> "{{wine_name}}"에 해당하는 정보를 찾지 못했습니다.</h1>
+                        {% if imgname == '' %}
+                        <h1> 이미지를 올려주세요. </h1>
+                        {% else %}
+                        <img src = '/static/source/{{imgname}}' style = "width:40%; height:50%;" />
+                        {% endif %}
+                    </div>
+                    <h1><a href="{% url 'index' %}" type="button" class="btn btn-warning">다시 찾기</a></h1>  
+                {% endif %}
+                </div>
+            </div>
+        </section>
+    </main>
+    <div class="mt-auto">
+        {% include 'wines/footer.html' %}
+    </div>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script>
+    <script src="{% static 'vendor/aos/aos.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/main_index.js' %}"></script>
+
+</body>
+</html>
