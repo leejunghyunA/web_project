@@ -75,7 +75,7 @@
 </br>
 
 ## 최종 구현 화면
-![B_WINEZ_와린이를-위한-와인추천서비스-웹사이트-구현_구현영상_압축_ (1)](https://user-images.githubusercontent.com/108326629/210950351-b7125bf7-a436-4c20-9406-87bb330ffe92.gif)
+![제목 없는 동영상 - Clipchamp로 제작](https://user-images.githubusercontent.com/108326573/218382624-d7d1cabf-0c98-47ad-859b-efb18362a66b.gif)
 
 </br>
 </br>
